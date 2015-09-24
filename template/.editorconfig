@@ -1,0 +1,30 @@
+# EditorConfig is awesome: http://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+# scripts
+[bin/**]
+indent_style = space
+indent_size = 2
+
+# styles
+[app/styles/**/*.scss]
+indent_style = space
+indent_size = 2
+
+# project files
+[{.eslintrc,.postcssrc,package.json}]
+indent_style = space
+indent_size = 2
+
+# app
+[app/**]
+indent_style = space
+indent_size = 2

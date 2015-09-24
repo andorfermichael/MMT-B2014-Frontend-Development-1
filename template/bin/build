@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+npm run lint
+npm run init
+npm run copy
+npm run icons
+npm run images
+npm run scripts
+npm run styles

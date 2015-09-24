@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "_variables";
+@import "_normalize";
+@import "_flexboxgrid";
+
+body {
+  background-color: #eaeaea;
+}
+
+a {
+  color: $primary;
+
+  &:hover {
+    color: darken($primary, 20%);
+  }
+}

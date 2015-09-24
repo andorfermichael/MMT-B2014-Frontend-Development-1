@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cp app/*.html dist/
+find ./dist -type f -name '*.html' -print0 | xargs -0 -n1 -I {} html-minifier --collapse-whitespace -o {} {}

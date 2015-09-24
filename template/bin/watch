@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+copy() {
+  nodemon -w app/*.html --ext html --exec 'npm run copy'
+}
+
+scripts() {
+  watchify -d -e app/scripts/app.js -o dist/scripts/app.js
+}
+
+server() {
+  lr-http-server -d ./dist -w **/*.js,**/*.css,**/*.html,**/*.png,**/*.gif,**/*.jpg
+}
+
+styles() {
+  node-sass -w -r app/styles/app.scss > dist/styles/app.css
+}
+
+copy &
+scripts &
+styles &
+server &
+
+trap 'kill $( pgrep -P $$ | tr "\n" " " )' SIGINT SIGTERM EXIT

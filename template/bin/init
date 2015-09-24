@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# cleanup
+rm -rf ./dist
+
+# create output directory
+mkdir -p ./dist
+
+# create icons
+mkdir -p ./dist/icons
+
+# create images
+mkdir -p ./dist/images
+
+# create scripts
+mkdir -p ./dist/scripts
+
+# create styles
+mkdir -p ./dist/styles
+
+# copy dependencies
+cp ./node_modules/flexboxgrid/dist/flexboxgrid.css ./app/styles/_flexboxgrid.scss
+cp ./node_modules/normalize.css/normalize.css ./app/styles/_normalize.scss

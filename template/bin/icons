@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const pkg = require(path.resolve('package.json'))
+const favicons = require('favicons')
+
+const config = {
+  files: {
+    src: path.resolve('app/images/logo.png'),
+    dest: path.resolve('dist/icons'),
+    html: 'dist/index.html'
+  },
+  settings: {
+    appName: pkg.name,
+    appDescription: pkg.description,
+    developer: pkg.author,
+    version: pkg.version
+  }
+}
+
+favicons(config, err => {
+  process.exit(0)
+})
