@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+node-sass style.scss ./dist/style.css
+

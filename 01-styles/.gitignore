@@ -1,0 +1,9 @@
+# IDE
+.idea/
+
+# deps
+node_modules/
+
+# site
+dist/
+
