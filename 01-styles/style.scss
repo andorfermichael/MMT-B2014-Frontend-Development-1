@@ -97,11 +97,11 @@ header {
 	margin: 20px 20px 20px 10px;
 	width: 160px;
 	float: left;
-}
 
-.summary p {
-	font: italic 1.1em/2.2 georgia;
-	text-align: center;
+	p {
+		font: italic 1.1em/2.2 georgia;
+		text-align: center;
+	}
 }
 
 .preamble {
@@ -178,11 +178,11 @@ footer {
 
 		  	a {
 			 	&:link {
-				  color: $sidebar-link-color;
+				  	color: $sidebar-link-color;
 				}
 
 				&:visited {
-				  color: $sidebar-link-visited-color;
+				  	color: $sidebar-link-visited-color;
 				}
 			}
 		}
