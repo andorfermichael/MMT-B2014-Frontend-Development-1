@@ -1,0 +1,20 @@
+@mixin header($background-url, $margin-top, $margin-bottom, $width, $height, $float) {
+  background: transparent url($background-url) no-repeat top left;
+  margin: $margin-top $margin-bottom;
+  display: block;
+  width: $width;
+  height: $height;
+  float: $float;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin sidebar-header($background-url, $margin-top, $width, $height) {
+  background: transparent url($background-url) no-repeat top left;
+  margin: $margin-top 0 5px 0;
+  width: $width;
+  height: $height;
+
+}
