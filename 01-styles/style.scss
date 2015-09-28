@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 
 /* basic elements */
@@ -8,12 +9,12 @@ html {
 }
 
 body {
+  	@extend html;
+
 	font: 75% georgia, sans-serif;
 	line-height: 1.88889;
 	color: $base-font-color;
 	background: $base-background-color url(blossoms.jpg) no-repeat bottom right;
-	margin: 0;
-	padding: 0;
 }
 
 p {
@@ -66,29 +67,11 @@ header {
 	height: 87px;
 
 	h1 {
-		background: transparent url(h1.gif) no-repeat top left;
-		margin-top: 10px;
-		display: block;
-		width: 219px;
-		height: 87px;
-		float: left;
-
-		text-indent: 100%;
-		white-space: nowrap;
-		overflow: hidden;
+	  	@include header("h1.gif", 10px, 10px, 219px, 87px, left);
 	}
 
     h2 {
-		background: transparent url(h2.gif) no-repeat top left;
-		margin-top: 58px;
-		margin-bottom: 40px;
-		width: 200px;
-		height: 18px;
-		float: right;
-
-		text-indent: 100%;
-		white-space: nowrap;
-		overflow: hidden;
+	  	@include header("h2.gif", 58px, 40px, 200px, 18px, right);
     }
 }
 
@@ -143,24 +126,15 @@ footer {
 		overflow: hidden;
 
 		&.select {
-			background: transparent url(h3.gif) no-repeat top left;
-			margin: 10px 0 5px 0;
-			width: 97px;
-			height: 16px;
+		  	@include sidebar-header("h3.gif", 10px, 97px, 16px);
 		}
 
 		&.archives {
-			background: transparent url(h5.gif) no-repeat top left;
-			margin: 25px 0 5px 0;
-			width:57px;
-			height: 14px;
+		  	@include sidebar-header("h5.gif", 25px, 57px, 14px);
 		}
 
 		&.resources {
-			background: transparent url(h6.gif) no-repeat top left;
-			margin: 25px 0 5px 0;
-			width:63px;
-			height: 10px;
+		  	@include sidebar-header("h6.gif", 25px, 63px, 10px);
 		}
 	}
 
