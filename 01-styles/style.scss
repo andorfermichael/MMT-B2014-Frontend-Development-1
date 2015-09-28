@@ -106,7 +106,7 @@ header {
 
 .preamble {
 	clear: right;
-	padding: 0px 10px 0 10px;
+	padding: 0 10px 0 10px;
 }
 
 .supporting {
@@ -127,72 +127,67 @@ footer {
 	position: absolute;
 	top: 0;
 	right: 0;
+
+
+	.wrapper {
+		font: 10px verdana, sans-serif;
+		background: transparent url(paper-bg.jpg) top left repeat-y;
+		padding: 10px;
+		margin-top: 150px;
+		width: 130px;
+	}
+
+	h3 {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+
+		&.select {
+			background: transparent url(h3.gif) no-repeat top left;
+			margin: 10px 0 5px 0;
+			width: 97px;
+			height: 16px;
+		}
+
+		&.archives {
+			background: transparent url(h5.gif) no-repeat top left;
+			margin: 25px 0 5px 0;
+			width:57px;
+			height: 14px;
+		}
+
+		&.resources {
+			background: transparent url(h6.gif) no-repeat top left;
+			margin: 25px 0 5px 0;
+			width:63px;
+			height: 10px;
+		}
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		li {
+			line-height: 1.3em;
+			background: transparent url(cr1.gif) no-repeat top center;
+			display: block;
+			padding-top: 5px;
+			margin-bottom: 5px;
+			list-style-type: none;
+
+		  	a {
+			 	&:link {
+				  color: $sidebar-link-color;
+				}
+
+				&:visited {
+				  color: $sidebar-link-visited-color;
+				}
+			}
+		}
+	}
 }
-
-.sidebar .wrapper {
-	font: 10px verdana, sans-serif;
-	background: transparent url(paper-bg.jpg) top left repeat-y;
-	padding: 10px;
-	margin-top: 150px;
-	width: 130px;
-}
-
-.sidebar h3.select {
-	background: transparent url(h3.gif) no-repeat top left;
-	margin: 10px 0 5px 0;
-	width: 97px;
-	height: 16px;
-
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-.sidebar h3.archives {
-	background: transparent url(h5.gif) no-repeat top left;
-	margin: 25px 0 5px 0;
-	width:57px;
-	height: 14px;
-
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-.sidebar h3.resources {
-	background: transparent url(h6.gif) no-repeat top left;
-	margin: 25px 0 5px 0;
-	width:63px;
-	height: 10px;
-
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-
-.sidebar ul {
-	margin: 0;
-	padding: 0;
-}
-
-.sidebar li {
-	line-height: 1.3em;
-	background: transparent url(cr1.gif) no-repeat top center;
-	display: block;
-	padding-top: 5px;
-	margin-bottom: 5px;
-	list-style-type: none;
-}
-
-.sidebar li a:link {
-	color: $sidebar-link-color;
-}
-
-.sidebar li a:visited {
-	color: $sidebar-link-visited-color;
-}
-
 
 .extra1 {
 	background: transparent url(cr2.gif) top left no-repeat;
