@@ -1,5 +1,3 @@
-/*global jQuery, Handlebars, Router */
-
 import {
     ENTER_KEY,
     ESCAPE_KEY
