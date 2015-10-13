@@ -1,3 +1,17 @@
+import $ from 'jquery'
+
+import Handlebars from 'handlebars'
+
+import {
+    ENTER_KEY,
+    ESCAPE_KEY
+} from './keyboard'
+
+import {
+    uuid,
+    store
+} from './util'
+
 export function init() {
     this.todos = store('todos-jquery');
     this.cacheElements();
