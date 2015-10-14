@@ -36,4 +36,21 @@ export function es5() {
 }
 
 export function es6() {
+    function defaults(x = 12) {
+        return x
+    }
+
+    function rest(...x) {
+        return x.toString();
+    }
+
+    function spread(x, y, z = 0) {
+        return x + y + z
+    }
+
+    return {
+        defaults: defaults,
+        rest: rest,
+        spread: spread
+    }
 }
