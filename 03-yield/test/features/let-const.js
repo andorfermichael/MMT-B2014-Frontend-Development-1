@@ -11,7 +11,7 @@ export default function() {
     o.scope(3).should.eql(3)
   })
 
-  it.skip('should show let and const feature in ES6', () => {
+  it('should show let and const feature in ES6', () => {
     const o = es6()
     should(o.constants(3)).eql(8)
     should(function() {
