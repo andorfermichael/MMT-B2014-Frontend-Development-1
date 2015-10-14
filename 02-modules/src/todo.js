@@ -9,8 +9,13 @@ import {
 
 import {
     uuid,
+    pluralize,
     store
 } from './util'
+
+Handlebars.registerHelper('eq', function (a, b, options) {
+    return a === b ? options.fn(this) : options.inverse(this);
+});
 
 export function init() {
     this.todos = store('todos-jquery');
