@@ -8,7 +8,7 @@ export default function() {
     es5().result.should.eql(15)
   })
 
-  it.skip('should show arrows behavior in ES6', () => {
+  it('should show arrows behavior in ES6', () => {
     es6().result.should.eql(15)
   })
 }

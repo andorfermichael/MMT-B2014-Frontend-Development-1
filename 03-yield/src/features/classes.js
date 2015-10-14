@@ -10,5 +10,5 @@ export function es5(val) {
   return o.say()
 }
 
-export function es6() {
+export function es6(val) {
 }

@@ -9,5 +9,5 @@ export function es5(list, val) {
   return includes(list, val)
 }
 
-export function es6() {
+export function es6(list, val) {
 }
