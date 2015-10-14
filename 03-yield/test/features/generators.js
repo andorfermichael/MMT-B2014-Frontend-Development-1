@@ -13,7 +13,7 @@ export default function() {
     should(next()).eql(undefined)
   })
 
-  it.skip('should return an iterator in ES6', () => {
+  it('should return an iterator in ES6', () => {
     var itr = es6(3)
     itr.next().value.should.eql(1)
     itr.next().value.should.eql(2)
