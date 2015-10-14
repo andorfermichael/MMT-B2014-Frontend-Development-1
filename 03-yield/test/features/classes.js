@@ -8,7 +8,7 @@ export default function() {
     es5('World!').should.eql('World!')
   })
 
-  it.skip('should show class functions in ES6', () => {
+  it('should show class functions in ES6', () => {
     es6('World!').should.eql('World!')
   })
 }
