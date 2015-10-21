@@ -2,11 +2,14 @@ import {
   es5,
   es6
 } from '../../src/features/modules'
+import validator from 'validator'
 
 export default function() {
-  it.skip('should show prototype syntax in ES5', () => {
+  it('should require and use "uuid" module in ES5', () => {
+    validator.isUUID(es5(), 4).should.be.true
   })
 
-  it.skip('should show class syntax in ES6', () => {
+  it.skip('should import and use "uuid" module in ES6', () => {
+    validator.isUUID(es6(), 4).should.be.true
   })
 }

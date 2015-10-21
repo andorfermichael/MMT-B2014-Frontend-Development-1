@@ -4,9 +4,11 @@ import {
 } from '../../src/features/iterators-forof'
 
 export default function() {
-  it.skip('should show prototype syntax in ES5', () => {
+  it('should return result sum of array values in ES5', () => {
+    es5().should.eql(15)
   })
 
-  it.skip('should show class syntax in ES6', () => {
+  it.skip('should return sum of array values in ES6', () => {
+    es6().should.eql(15)
   })
 }

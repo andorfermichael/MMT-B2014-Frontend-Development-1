@@ -26,6 +26,8 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "mocha": "^2.3.3",
-    "should": "^7.1.0"
+    "should": "^7.1.0",
+    "uuid": "^2.0.1",
+    "validator": "^4.1.0"
   }
 }

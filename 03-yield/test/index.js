@@ -10,12 +10,8 @@ import mapSet from './features/map-set'
 import modules from './features/modules'
 import objectLiterals from './features/object-literals'
 import promises from './features/promises'
-import proxies from './features/proxies'
-import reflectApi from './features/reflect-api'
-import subclassableBuiltins from './features/subclassable-builtins'
 import symbols from './features/symbols'
 import templateStrings from './features/template-strings'
-import unicode from './features/unicode'
 
 describe('lib', () => {
 
@@ -31,11 +27,7 @@ describe('lib', () => {
   describe('modules', modules)
   describe('object-literals', objectLiterals)
   describe('promises', promises)
-  describe('proxies', proxies)
-  describe('reflect-api', reflectApi)
-  describe('subclassable-builtins', subclassableBuiltins)
   describe('symbols', symbols)
   describe('template-strings', templateStrings)
-  describe('unicode', unicode)
 
 })
