@@ -13,7 +13,7 @@ export default function() {
     o.i.should.eql(2)
   })
 
-  it.skip('should show enhanced object literals syntax in ES6', () => {
+  it('should show enhanced object literals syntax in ES6', () => {
     let o = es6()
 
     o.i.should.eql(0)
