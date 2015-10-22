@@ -8,7 +8,7 @@ export default function() {
     es5(10).should.eql('My value is more than 10.')
   })
 
-  it.skip('should show template strings in ES6', () => {
+  it('should show template strings in ES6', () => {
     es6(10).should.eql('My value is more than 10.')
   })
 }
