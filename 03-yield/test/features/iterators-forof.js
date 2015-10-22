@@ -8,7 +8,7 @@ export default function() {
     es5().should.eql(15)
   })
 
-  it.skip('should return sum of array values in ES6', () => {
+  it('should return sum of array values in ES6', () => {
     es6().should.eql(15)
   })
 }
