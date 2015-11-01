@@ -98,11 +98,11 @@ export function renderFooter(filter) {
 export function toggleAll(e) {
     var isChecked = $(e.target).prop('checked');
 
-    this.todos.forEach(function (todo) {
+    todos.forEach(function (todo) {
         todo.completed = isChecked;
     });
 
-    this.render();
+    render();
 }
 
 export function getActiveTodos() {
@@ -168,9 +168,9 @@ export function create(e) {
 }
 
 export function toggle(e) {
-    var i = this.indexFromEl(e.target);
-    this.todos[i].completed = !this.todos[i].completed;
-    this.render();
+    var i = indexFromEl(e.target);
+    todos[i].completed = !todos[i].completed;
+    render();
 }
 
 export function edit(e) {
