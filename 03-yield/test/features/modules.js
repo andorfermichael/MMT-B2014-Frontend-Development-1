@@ -9,7 +9,7 @@ export default function() {
     validator.isUUID(es5(), 4).should.be.true
   })
 
-  it.skip('should import and use "uuid" module in ES6', () => {
+  it('should import and use "uuid" module in ES6', () => {
     validator.isUUID(es6(), 4).should.be.true
   })
 }
