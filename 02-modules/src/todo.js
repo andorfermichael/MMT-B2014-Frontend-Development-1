@@ -31,16 +31,6 @@ const $todoList = $main.find('#todo-list');
 const list = $todoList;
 
 export function init() {
-    bindEvents();
-
-    new Router({
-        '/:filter': function (filter) {
-            render(filter);
-        }
-    }).init('/all');
-}
-
-export function bindEvents() {
     $newTodo.on('keyup', create);
     $toggleAll.on('change', toggleAll);
     $footer.on('click', '#clear-completed', destroyCompleted);
@@ -49,6 +39,12 @@ export function bindEvents() {
     list.on('keyup', '.edit', editKeyup);
     list.on('focusout', '.edit', update);
     list.on('click', '.destroy', destroy);
+
+    new Router({
+        '/:filter': function (filter) {
+            render(filter);
+        }
+    }).init('/all');
 }
 
 export function render(filter) {
