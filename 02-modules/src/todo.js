@@ -17,66 +17,82 @@ Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
 });
 
+var todoTemplate = Handlebars.compile($('#todo-template').html());
+var footerTemplate = Handlebars.compile($('#footer-template').html());
+var $todoApp = $('#todoapp');
+var $header = $todoApp.find('#header');
+var $main = $todoApp.find('#main');
+var $footer = $todoApp.find('#footer');
+var $newTodo = $header.find('#new-todo');
+var $toggleAll = $main.find('#toggle-all');
+var $todoList = $main.find('#todo-list');
+var $count = $footer.find('#todo-count');
+var $clearBtn = $footer.find('#clear-completed');
+
+var todos = store('todos-jquery');
+
 export function init() {
-    this.todos = store('todos-jquery');
-    this.cacheElements();
-    this.bindEvents();
+
+    //cacheElements();
+    bindEvents();
 
     new Router({
         '/:filter': function (filter) {
-            this.filter = filter;
-            this.render();
+            //filter = filter;
+            render(filter);
         }.bind(this)
     }).init('/all');
 }
 
-export function cacheElements() {
-    this.todoTemplate = Handlebars.compile($('#todo-template').html());
-    this.footerTemplate = Handlebars.compile($('#footer-template').html());
-    this.$todoApp = $('#todoapp');
-    this.$header = this.$todoApp.find('#header');
-    this.$main = this.$todoApp.find('#main');
-    this.$footer = this.$todoApp.find('#footer');
-    this.$newTodo = this.$header.find('#new-todo');
-    this.$toggleAll = this.$main.find('#toggle-all');
-    this.$todoList = this.$main.find('#todo-list');
-    this.$count = this.$footer.find('#todo-count');
-    this.$clearBtn = this.$footer.find('#clear-completed');
-}
+/*export function cacheElements() {
+    var todoTemplate = Handlebars.compile($('#todo-template').html());
+    var footerTemplate = Handlebars.compile($('#footer-template').html());
+    var $todoApp = $('#todoapp');
+    var $header = $todoApp.find('#header');
+    var $main = $todoApp.find('#main');
+    var $footer = $todoApp.find('#footer');
+    var $newTodo = $header.find('#new-todo');
+    var $toggleAll = $main.find('#toggle-all');
+    var $todoList = $main.find('#todo-list');
+    var $count = $footer.find('#todo-count');
+    var $clearBtn = $footer.find('#clear-completed');
+}*/
+
+var list = $todoList;
 
 export function bindEvents() {
-    var list = this.$todoList;
-    this.$newTodo.on('keyup', this.create.bind(this));
-    this.$toggleAll.on('change', this.toggleAll.bind(this));
-    this.$footer.on('click', '#clear-completed', this.destroyCompleted.bind(this));
-    list.on('change', '.toggle', this.toggle.bind(this));
-    list.on('dblclick', 'label', this.edit.bind(this));
-    list.on('keyup', '.edit', this.editKeyup.bind(this));
-    list.on('focusout', '.edit', this.update.bind(this));
-    list.on('click', '.destroy', this.destroy.bind(this));
+
+    $newTodo.on('keyup', create.bind(this));
+    $toggleAll.on('change', toggleAll.bind(this));
+    $footer.on('click', '#clear-completed', destroyCompleted.bind(this));
+    list.on('change', '.toggle', toggle.bind(this));
+    list.on('dblclick', 'label', edit.bind(this));
+    list.on('keyup', '.edit', editKeyup.bind(this));
+    list.on('focusout', '.edit', update.bind(this));
+    list.on('click', '.destroy', destroy.bind(this));
 }
 
-export function render() {
-    var todos = this.getFilteredTodos();
-    this.$todoList.html(this.todoTemplate(todos));
-    this.$main.toggle(todos.length > 0);
-    this.$toggleAll.prop('checked', this.getActiveTodos().length === 0);
-    this.renderFooter();
-    this.$newTodo.focus();
-    store('todos-jquery', this.todos);
+export function render(filter) {
+    var todos = getFilteredTodos(filter);
+    $todoList.html(todoTemplate(todos));
+    $main.toggle(todos.length > 0);
+    $toggleAll.prop('checked', getActiveTodos().length === 0);
+    renderFooter(filter);
+    $newTodo.focus();
+    store('todos-jquery', todos);
 }
 
-export function renderFooter() {
-    var todoCount = this.todos.length;
-    var activeTodoCount = this.getActiveTodos().length;
-    var template = this.footerTemplate({
+export function renderFooter(filter) {
+    var todoCount = todos.length;
+    var activeTodoCount = getActiveTodos().length;
+    var template = footerTemplate({
         activeTodoCount: activeTodoCount,
         activeTodoWord: pluralize(activeTodoCount, 'item'),
         completedTodos: todoCount - activeTodoCount,
-        filter: this.filter
+        filter: filter
     });
 
-    this.$footer.toggle(todoCount > 0).html(template);
+    $footer.toggle(todoCount > 0).html(template);
 }
 
 export function toggleAll(e) {
@@ -90,33 +106,33 @@ export function toggleAll(e) {
 }
 
 export function getActiveTodos() {
-    return this.todos.filter(function (todo) {
+    return todos.filter(function (todo) {
         return !todo.completed;
     });
 }
 
 export function getCompletedTodos() {
-    return this.todos.filter(function (todo) {
+    return todos.filter(function (todo) {
         return todo.completed;
     });
 }
 
-export function getFilteredTodos() {
-    if (this.filter === 'active') {
-        return this.getActiveTodos();
+export function getFilteredTodos(filter) {
+    if (filter === 'active') {
+        return getActiveTodos();
     }
 
-    if (this.filter === 'completed') {
-        return this.getCompletedTodos();
+    if (filter === 'completed') {
+        return getCompletedTodos();
     }
 
-    return this.todos;
+    return todos;
 }
 
 export function destroyCompleted() {
-    this.todos = this.getActiveTodos();
-    this.filter = 'all';
-    this.render();
+    var todos = getActiveTodos();
+    filter = 'all';
+    render();
 }
 
 // accepts an element from inside the `.item` div and
@@ -141,7 +157,7 @@ export function create(e) {
         return;
     }
 
-    this.todos.push({
+    todos.push({
         id: uuid(),
         title: val,
         completed: false
@@ -149,7 +165,7 @@ export function create(e) {
 
     $input.val('');
 
-    this.render();
+    render();
 }
 
 export function toggle(e) {
