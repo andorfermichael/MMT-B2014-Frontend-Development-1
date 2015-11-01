@@ -3,5 +3,8 @@ export function es5() {
   return module.uuid()
 }
 
+import * as util from '../utils'
+
 export function es6() {
+  return util.uuid()
 }
