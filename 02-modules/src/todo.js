@@ -17,20 +17,18 @@ Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
 });
 
-var todoTemplate = Handlebars.compile($('#todo-template').html());
-var footerTemplate = Handlebars.compile($('#footer-template').html());
-var $todoApp = $('#todoapp');
-var $header = $todoApp.find('#header');
-var $main = $todoApp.find('#main');
-var $footer = $todoApp.find('#footer');
-var $newTodo = $header.find('#new-todo');
-var $toggleAll = $main.find('#toggle-all');
-var $todoList = $main.find('#todo-list');
-var $count = $footer.find('#todo-count');
-var $clearBtn = $footer.find('#clear-completed');
+let todos = store('todos-jquery');
 
-var todos = store('todos-jquery');
-var list = $todoList;
+const todoTemplate = Handlebars.compile($('#todo-template').html());
+const footerTemplate = Handlebars.compile($('#footer-template').html());
+const $todoApp = $('#todoapp');
+const $header = $todoApp.find('#header');
+const $main = $todoApp.find('#main');
+const $footer = $todoApp.find('#footer');
+const $newTodo = $header.find('#new-todo');
+const $toggleAll = $main.find('#toggle-all');
+const $todoList = $main.find('#todo-list');
+const list = $todoList;
 
 export function init() {
     bindEvents();
@@ -111,7 +109,7 @@ export function getFilteredTodos(filter) {
 }
 
 export function destroyCompleted() {
-    var todos = getActiveTodos();
+    todos = getActiveTodos();
     var filter = 'all';
     render(filter);
 }
