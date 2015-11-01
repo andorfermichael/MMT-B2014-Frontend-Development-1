@@ -139,7 +139,6 @@ export function destroyCompleted() {
 // returns the corresponding index in the `todos` array
 export function indexFromEl(el) {
     var id = $(el).closest('li').data('id');
-    var todos = this.todos;
     var i = todos.length;
 
     while (i--) {
@@ -203,15 +202,15 @@ export function update(e) {
     var i = this.indexFromEl(el);
 
     if (val) {
-        this.todos[i].title = val;
+        todos[i].title = val;
     } else {
-        this.todos.splice(i, 1);
+        todos.splice(i, 1);
     }
 
     this.render();
 }
 
 export function destroy(e) {
-    this.todos.splice(this.indexFromEl(e.target), 1);
-    this.render();
+    todos.splice(indexFromEl(e.target), 1);
+    render();
 }
