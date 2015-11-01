@@ -175,5 +175,5 @@ export function toggle(e) {
     render();
 }
 
-
+// Run application
 init();
