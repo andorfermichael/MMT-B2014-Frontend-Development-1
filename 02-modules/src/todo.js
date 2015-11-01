@@ -2,18 +2,15 @@ import $ from 'jquery'
 
 import Handlebars from 'handlebars'
 
-import {
-    ENTER_KEY,
-    ESCAPE_KEY
-} from './keyboard'
+import * as Keyboard from './keyboard';
 
-import * from './util' as util;
+import * as Util from './util';
 
 Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
 });
 
-let todos = store('todos-jquery');
+let todos = Util.store('todos-jquery');
 
 const todoTemplate = Handlebars.compile($('#todo-template').html());
 const footerTemplate = Handlebars.compile($('#footer-template').html());
@@ -28,15 +25,15 @@ const list = $todoList;
 
 export function init() {
     $newTodo.on('keyup', function(e) {
-        var $input = $(e.target);
-        var val = $input.val().trim();
+        const $input = $(e.target);
+        const val = $input.val().trim();
 
-        if (e.which !== ENTER_KEY || !val) {
+        if (e.which !== Keyboard.ENTER_KEY || !val) {
             return;
         }
 
         todos.push({
-            id: uuid(),
+            id: Util.uuid(),
             title: val,
             completed: false
         });
@@ -47,7 +44,7 @@ export function init() {
     });
 
     $toggleAll.on('change', function(e){
-            var isChecked = $(e.target).prop('checked');
+            const isChecked = $(e.target).prop('checked');
 
             todos.forEach(function (todo) {
                 todo.completed = isChecked;
@@ -59,31 +56,31 @@ export function init() {
 
     $footer.on('click', '#clear-completed', function(){
         todos = getActiveTodos();
-        var filter = 'all';
+        const filter = 'all';
         render(filter);
     });
 
     list.on('change', '.toggle', toggle);
 
     list.on('dblclick', 'label', function(e){
-        var $input = $(e.target).closest('li').addClass('editing').find('.edit');
+        const $input = $(e.target).closest('li').addClass('editing').find('.edit');
         $input.val($input.val()).focus();
     });
 
     list.on('keyup', '.edit', function(e){
-        if (e.which === ENTER_KEY) {
+        if (e.which === Keyboard.ENTER_KEY) {
             e.target.blur();
         }
 
-        if (e.which === ESCAPE_KEY) {
+        if (e.which === Keyboard.ESCAPE_KEY) {
             $(e.target).data('abort', true).blur();
         }
     });
 
     list.on('focusout', '.edit', function(e){
-        var el = e.target;
-        var $el = $(el);
-        var val = $el.val().trim();
+        const el = e.target;
+        const $el = $(el);
+        const val = $el.val().trim();
 
         if ($el.data('abort')) {
             $el.data('abort', false);
@@ -91,7 +88,7 @@ export function init() {
             return;
         }
 
-        var i = indexFromEl(el);
+        const i = indexFromEl(el);
 
         if (val) {
             todos[i].title = val;
@@ -115,16 +112,16 @@ export function init() {
 }
 
 export function render(filter) {
-    var todos = getFilteredTodos(filter);
+    const todos = getFilteredTodos(filter);
     $todoList.html(todoTemplate(todos));
     $main.toggle(todos.length > 0);
     $toggleAll.prop('checked', getActiveTodos().length === 0);
 
-    var todoCount = todos.length;
-    var activeTodoCount = getActiveTodos().length;
-    var template = footerTemplate({
+    const todoCount = todos.length;
+    const activeTodoCount = getActiveTodos().length;
+    const template = footerTemplate({
         activeTodoCount: activeTodoCount,
-        activeTodoWord: pluralize(activeTodoCount, 'item'),
+        activeTodoWord: Util.pluralize(activeTodoCount, 'item'),
         completedTodos: todoCount - activeTodoCount,
         filter: filter
     });
@@ -132,7 +129,7 @@ export function render(filter) {
     $footer.toggle(todoCount > 0).html(template);
 
     $newTodo.focus();
-    store('todos-jquery', todos);
+    Util.store('todos-jquery', todos);
 }
 
 export function getActiveTodos() {
@@ -162,8 +159,8 @@ export function getFilteredTodos(filter) {
 // accepts an element from inside the `.item` div and
 // returns the corresponding index in the `todos` array
 export function indexFromEl(el) {
-    var id = $(el).closest('li').data('id');
-    var i = todos.length;
+    const id = $(el).closest('li').data('id');
+    let i = todos.length;
 
     while (i--) {
         if (todos[i].id === id) {
@@ -173,7 +170,11 @@ export function indexFromEl(el) {
 }
 
 export function toggle(e) {
-    var i = indexFromEl(e.target);
+    console.log();
+    const i = indexFromEl(e.target);
     todos[i].completed = !todos[i].completed;
     render();
 }
+
+
+init();
