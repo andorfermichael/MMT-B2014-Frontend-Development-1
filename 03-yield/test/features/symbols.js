@@ -8,6 +8,16 @@ export default function() {
 
   })
 
-  it.skip('should show symbols syntax and behavior in ES6', () => {
+  it('should show symbols syntax and behavior in ES6', () => {
+    const sym = es6();
+
+    function test(sym){
+      if (typeof sym === 'symbol')
+        return true
+      else
+        return false
+    }
+
+    test(sym).should.be.true
   })
 }
