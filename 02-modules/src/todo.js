@@ -30,46 +30,27 @@ var $count = $footer.find('#todo-count');
 var $clearBtn = $footer.find('#clear-completed');
 
 var todos = store('todos-jquery');
+var list = $todoList;
 
 export function init() {
-
-    //cacheElements();
     bindEvents();
 
     new Router({
         '/:filter': function (filter) {
-            //filter = filter;
             render(filter);
-        }.bind(this)
+        }
     }).init('/all');
 }
 
-/*export function cacheElements() {
-    var todoTemplate = Handlebars.compile($('#todo-template').html());
-    var footerTemplate = Handlebars.compile($('#footer-template').html());
-    var $todoApp = $('#todoapp');
-    var $header = $todoApp.find('#header');
-    var $main = $todoApp.find('#main');
-    var $footer = $todoApp.find('#footer');
-    var $newTodo = $header.find('#new-todo');
-    var $toggleAll = $main.find('#toggle-all');
-    var $todoList = $main.find('#todo-list');
-    var $count = $footer.find('#todo-count');
-    var $clearBtn = $footer.find('#clear-completed');
-}*/
-
-var list = $todoList;
-
 export function bindEvents() {
-
-    $newTodo.on('keyup', create.bind(this));
-    $toggleAll.on('change', toggleAll.bind(this));
-    $footer.on('click', '#clear-completed', destroyCompleted.bind(this));
-    list.on('change', '.toggle', toggle.bind(this));
-    list.on('dblclick', 'label', edit.bind(this));
-    list.on('keyup', '.edit', editKeyup.bind(this));
-    list.on('focusout', '.edit', update.bind(this));
-    list.on('click', '.destroy', destroy.bind(this));
+    $newTodo.on('keyup', create);
+    $toggleAll.on('change', toggleAll);
+    $footer.on('click', '#clear-completed', destroyCompleted);
+    list.on('change', '.toggle', toggle);
+    list.on('dblclick', 'label', edit);
+    list.on('keyup', '.edit', editKeyup);
+    list.on('focusout', '.edit', update);
+    list.on('click', '.destroy', destroy);
 }
 
 export function render(filter) {
@@ -131,8 +112,8 @@ export function getFilteredTodos(filter) {
 
 export function destroyCompleted() {
     var todos = getActiveTodos();
-    filter = 'all';
-    render();
+    var filter = 'all';
+    render(filter);
 }
 
 // accepts an element from inside the `.item` div and
@@ -195,11 +176,11 @@ export function update(e) {
 
     if ($el.data('abort')) {
         $el.data('abort', false);
-        this.render();
+        render();
         return;
     }
 
-    var i = this.indexFromEl(el);
+    var i = indexFromEl(el);
 
     if (val) {
         todos[i].title = val;
@@ -207,7 +188,7 @@ export function update(e) {
         todos.splice(i, 1);
     }
 
-    this.render();
+    render();
 }
 
 export function destroy(e) {
