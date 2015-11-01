@@ -52,12 +52,7 @@ export function render(filter) {
     $todoList.html(todoTemplate(todos));
     $main.toggle(todos.length > 0);
     $toggleAll.prop('checked', getActiveTodos().length === 0);
-    renderFooter(filter);
-    $newTodo.focus();
-    store('todos-jquery', todos);
-}
 
-export function renderFooter(filter) {
     var todoCount = todos.length;
     var activeTodoCount = getActiveTodos().length;
     var template = footerTemplate({
@@ -68,6 +63,9 @@ export function renderFooter(filter) {
     });
 
     $footer.toggle(todoCount > 0).html(template);
+
+    $newTodo.focus();
+    store('todos-jquery', todos);
 }
 
 export function toggleAll(e) {
