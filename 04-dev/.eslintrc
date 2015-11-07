@@ -1,0 +1,33 @@
+{
+  "ecmaFeatures": {
+	  "binaryLiterals": false,                    // enable binary literals
+	  "blockBindings": true,                      // enable let and const (aka block bindings)
+	  "defaultParams": true,                      // enable default function parameters
+	  "forOf": true,                              // enable for-of loops
+	  "generators": true,                         // enable generators
+	  "objectLiteralComputedProperties": false,   // enable computed object literal property names
+	  "objectLiteralDuplicateProperties": false,  // enable duplicate object literal properties in strict mode
+	  "objectLiteralShorthandMethods": false,     // enable object literal shorthand methods
+	  "objectLiteralShorthandProperties": false,  // enable object literal shorthand properties
+	  "octalLiterals": false,                     // enable octal literals
+	  "regexUFlag": false,                        // enable the regular expression u flag
+	  "regexYFlag": false,                        // enable the regular expression y flag
+	  "templateStrings": true,                    // enable template strings
+	  "unicodeCodePointEscapes": false,           // enable code point escapes
+	  "jsx": false                                // enable JSX
+  },
+  "rules": {
+    "quotes": [
+      1,
+      "single"
+    ],
+    "semi": [
+      2,
+      "never"
+    ]
+  },
+  "env": {
+    "es6": true
+  },
+  "parser": "babel-eslint"
+}

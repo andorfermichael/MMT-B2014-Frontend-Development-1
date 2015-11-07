@@ -1,0 +1,18 @@
+{
+  "name": "04-dev",
+  "version": "1.0.0",
+  "description": "Fourth assignment frontend development 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Assignment Frontend Development Formula1"
+  ],
+  "author": "Michael Andorfer <mandorfer.mmt-b2014@fh-salzburg.ac.at>",
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
