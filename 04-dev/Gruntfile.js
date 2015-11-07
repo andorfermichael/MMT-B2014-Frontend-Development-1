@@ -5,8 +5,8 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt)
   require('time-grunt')(grunt)
 
-  const serveStatic = require('serve-static')
-  const config = {
+  var serveStatic = require('serve-static')
+  var config = {
     app: 'app',
     dist: 'dist'
   }
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          '<%= config.dist %>/scripts/app.js': ['<%= config.app %>/scripts/**/*.js']
+          '<%= config.dist %>/scripts/app.js': ['<%= config.app %>/assets/scripts/js/**/*.js']
         },
         options: {
           browserifyOptions: {
@@ -47,17 +47,17 @@ module.exports = function(grunt) {
           base: '<%= config.dist %>',
           open: true,
           middleware: function(connect, options) {
-            const middlewares = []
+            var middlewares = []
             if (!Array.isArray(options.base)) {
               options.base = [options.base]
             }
-            const directory = options.directory || options.base[options.base.length - 1]
+            var directory = options.directory || options.base[options.base.length - 1]
             options.base.forEach(function(base) {
               middlewares.push(serveStatic(base))
             })
             //middlewares.push(serveStatic(directory))
             middlewares.push(function(req, res) {
-              for (let file, i = 0; i < options.base.length; i++) {
+              for (var file, i = 0; i < options.base.length; i++) {
                 file = options.base + "/index.html"
                 if (grunt.file.exists(file)) {
                   require('fs').createReadStream(file).pipe(res)
@@ -91,13 +91,13 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= config.app %>',
-            src: ['styles/**/*.css'],
+            src: ['assets/styles/**/*.css'],
             dest: '<%= config.dist %>'
           },
           {
             expand: true,
             cwd: '<%= config.app %>',
-            src: ['images/**/*{.png,.gif,.jpg}'],
+            src: ['assets/images/**/*{.png,.gif,.jpg}'],
             dest: '<%= config.dist %>/images'
           }
         ]
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
     },
 
     eslint: {
-      target: ['<%= config.app %>/scripts/*.js']
+      target: ['<%= config.app %>/assets/scripts/js/*.js']
     },
 
     less: {
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
           ]
         },
         files: {
-          '<%= config.dist %>/styles/app.css': '<%= config.app %>/styles/app.less'
+          '<%= config.dist %>/styles/app.css': '<%= config.app %>/assets/styles/app.less'
         }
       }
     },
@@ -138,19 +138,19 @@ module.exports = function(grunt) {
         tasks: ['copy']
       },
       images: {
-        files: ['<%= config.app %>/images/**/*{.png,.gif,.jpg}'],
+        files: ['<%= config.app %>/assets/images/**/*{.png,.gif,.jpg}'],
         tasks: ['copy']
       },
       scripts: {
-        files: ['<%= config.app %>/scripts/**/*.js'],
+        files: ['<%= config.app %>/assets/scripts/js/**/*.js'],
         tasks: ['eslint', 'browserify']
       },
       templates: {
-        files: ['<%= config.app %>/scripts/templates/**/*.hbs'],
+        files: ['<%= config.app %>/assets/scripts/templates/**/*.hbs'],
         tasks: ['browserify']
       },
       styles: {
-        files: ['<%= config.app %>/styles/*.less'],
+        files: ['<%= config.app %>/assets/styles/*.less'],
         tasks: ['less']
       },
       gruntfile: {
