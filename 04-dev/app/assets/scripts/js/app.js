@@ -41,6 +41,7 @@ function drivers() {
 
 
 //page('/', '/home')
-//page('/home', home())
+//page('/home', pages.home)
 
-page('/drivers', drivers())
+page('/drivers', drivers)
+page()
