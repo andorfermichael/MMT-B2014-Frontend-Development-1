@@ -51,7 +51,6 @@ function drivers() {
 	 })
 	.then(data => {
 		$content.html(tplDrivers({drivers: data.MRData.DriverTable.Drivers}))
-	console.log({races: data.MRData.CircuitTable.Circuits})
 	})
 	.catch(err => {
 		$content.html('Error')
@@ -84,7 +83,6 @@ function circuits() {
 	})
 	.then(data => {
 		$content.html(tplCircuits({circuits: data.MRData.CircuitTable.Circuits}))
-		console.log({circuits: data.MRData.CircuitTable.Circuits})
 	})
 	.catch(err => {
 		$content.html('Error')
