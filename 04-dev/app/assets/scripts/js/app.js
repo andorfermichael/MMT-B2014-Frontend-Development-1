@@ -2,6 +2,7 @@ import $ from 'jquery'
 import page from 'page'
 import fetch from 'isomorphic-fetch'
 import tplHome from './templates/home.hbs'
+import tplConstructors from './templates/constructors.hbs'
 import tplDrivers from './templates/drivers.hbs'
 
 const $content = $('#content')
@@ -24,7 +25,7 @@ function home() {
 
 function drivers() {
 	fetch('http://ergast.com/api/f1' + '/drivers.json')
-	 .then(response => {
+	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
 		}
@@ -38,10 +39,29 @@ function drivers() {
 	})
 }
 
+function constructors() {
+	fetch('http://ergast.com/api/f1' + '/constructors.json')
+	.then(response => {
+		if (response.status >= 400) {
+			$content.html('Error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		$content.html(tplConstructors({constructors: data.MRData.ConstructorTable.Constructors}))
+	})
+	.catch(err => {
+		$content.html('Error')
+	})
+}
+
 
 
 page('/', '/home')
 page('/home', home)
 
 page('/drivers', drivers)
+
+page('/constructors', constructors)
+
 page()
