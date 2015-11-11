@@ -40,8 +40,8 @@ function drivers() {
 
 
 
-//page('/', '/home')
-//page('/home', pages.home)
+page('/', '/home')
+page('/home', home)
 
 page('/drivers', drivers)
 page()
