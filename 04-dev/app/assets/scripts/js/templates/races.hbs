@@ -1,0 +1,19 @@
+<h2>Races</h2>
+<table class="table table-condensed table-responsive">
+    <thead>
+    <th>Round</th>
+    <th>Name</th>
+    <th>Season</th>
+    <th>Date</th>
+    </thead>
+    <tbody>
+	{{#each races}}
+        <tr>
+            <td>{{round}}</td>
+            <td>{{raceName}}</td>
+            <td>{{season}}</td>
+            <td>{{date}}</td>
+        </tr>
+	{{/each}}
+    </tbody>
+</table>

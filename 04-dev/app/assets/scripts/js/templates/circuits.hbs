@@ -1,0 +1,17 @@
+<h2>Circuits</h2>
+<table class="table table-condensed table-responsive">
+    <thead>
+    <th>Name</th>
+    <th>Locality</th>
+    <th>Country</th>
+    </thead>
+    <tbody>
+	{{#each circuits}}
+        <tr>
+            <td>{{circuitName}}</td>
+            <td>{{Location.locality}}</td>
+            <td>{{Location.country}}</td>
+        </tr>
+	{{/each}}
+    </tbody>
+</table>
