@@ -79,8 +79,8 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'node_modules/bootstrap/dist',
-            src: ['assets/fonts/**'],
-            dest: '<%= config.dist %>'
+            src: ['fonts/**'],
+            dest: '<%= config.dist %>/assets'
           },
           {
             expand: true,
@@ -97,8 +97,8 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= config.app %>',
-            src: ['assets/images/**/*{.png,.gif,.jpg}'],
-            dest: '<%= config.dist %>/images'
+            src: ['assets/images/*{.png,.gif,.jpg,.svg}'],
+            dest: '<%= config.dist %>'
           }
         ]
       }
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
         tasks: ['copy']
       },
       images: {
-        files: ['<%= config.app %>/assets/images/**/*{.png,.gif,.jpg}'],
+        files: ['<%= config.app %>/assets/images/*{.png,.gif,.jpg,.svg}'],
         tasks: ['copy']
       },
       scripts: {
