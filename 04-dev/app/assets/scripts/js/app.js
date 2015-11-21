@@ -1,14 +1,22 @@
 import $ from 'jquery'
 import page from 'page'
 import fetch from 'isomorphic-fetch'
-import tplHome from './templates/home.hbs'
-import tplConstructors from './templates/constructors.hbs'
-import tplDrivers from './templates/drivers.hbs'
-import tplRaces from './templates/races.hbs'
-import tplCircuits from './templates/circuits.hbs'
+import Clipboard from 'clipboard'
+import Handlebars from 'hbsfy/runtime'
+import replace from './helpers/replace'
+import dateFormat from './helpers/date-format'
+import tplHome from '../templates/home.hbs'
+import tplProfile from '../templates/profile.hbs'
+import tplRepositories from '../templates/repositories.hbs'
+
+Handlebars.registerHelper('replace', replace)
+Handlebars.registerHelper('dateFormat', dateFormat)
 
 const $content = $('#content')
 const $nav = $('.nav')
+const test = 0
+
+new Clipboard('.btn-clipboard')
 
 page('*', function(ctx, next) {
 	$nav
@@ -25,81 +33,43 @@ function home() {
 	$content.html(tplHome())
 }
 
-function constructors() {
-	fetch('http://ergast.com/api/f1' + '/constructors.json')
-		.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-		$content.html(tplConstructors({constructors: data.MRData.ConstructorTable.Constructors}))
-	})
-	.catch(err => {
-		$content.html('Error')
-	})
-}
-
-function drivers() {
-	fetch('http://ergast.com/api/f1' + '/drivers.json')
+function profile() {
+	fetch('http://api.github.com/users/andorfermichael')
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
 		}
 		return response.json()
-	 })
+	})
 	.then(data => {
-		$content.html(tplDrivers({drivers: data.MRData.DriverTable.Drivers}))
+			$content.html(tplProfile({profileData: data}))
 	})
 	.catch(err => {
-		$content.html('Error')
+			$content.html('Error')
 	})
 }
 
-function races() {
-	fetch('http://ergast.com/api/f1' + '/races.json')
-		.then(response => {
+function repositories() {
+	fetch('https://api.github.com/users/andorfermichael/repos')
+	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
 		}
 		return response.json()
 	})
 	.then(data => {
-		$content.html(tplRaces({races: data.MRData.RaceTable.Races}))
+		$content.html(tplRepositories({repositoriesData: data}))
 	})
 	.catch(err => {
 		$content.html('Error')
 	})
 }
-
-function circuits() {
-	fetch('http://ergast.com/api/f1' + '/circuits.json')
-		.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-		$content.html(tplCircuits({circuits: data.MRData.CircuitTable.Circuits}))
-	})
-	.catch(err => {
-		$content.html('Error')
-	})
-}
-
-
 
 page('/', '/home')
 page('/home', home)
 
-page('/constructors', constructors)
+page('/profile', profile)
 
-page('/drivers', drivers)
-
-page('/races', races)
-
-page('/circuits', circuits)
+page('/repositories', repositories)
 
 page()

@@ -1,19 +1,27 @@
 <h2>Repositories</h2>
 <table class="table table-condensed table-responsive">
     <thead>
-    <th>Name</th>
-    <th>Created at</th>
-    <th>Last Push at</th>
-    <th>Clone URL</th>
+		<th>Name</th>
+		<th>Last Push at</th>
+		<th>Clone URL</th>
+		<th>Commits</th>
     </thead>
     <tbody>
 	{{#each repositoriesData}}
         <tr>
             <td>{{name}}</td>
-            <td>{{created_at}}</td>
-            <td>{{pushed_at}}</td>
-			<!--<td><button class="btn btn-xs" type="button" title="Copy-To-Clipboard"/></td>-->
-            <td>{{clone_url}}</td>
+			<td>{{dateFormat pushed_at format="DD.MM.YYYY, HH:mm:ss"}}</td>
+            <td>
+                <input id="id-{{id}}" value="{{clone_url}}" readonly>
+                <button class="btn btn-clipboard" data-clipboard-target="#id-{{id}}">
+                    <img src="assets/images/clippy.svg" width="15" height="15" alt="Copy to clipboard">
+                </button>
+            </td>
+            <td>
+				<a href="{{replace commits_url "{/sha}" "/master"}}" rel="external" target="_blank">
+                	<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+            	</a>
+			</td>
         </tr>
 	{{/each}}
     </tbody>
