@@ -1,0 +1,33 @@
+<h2>Profile</h2>
+<table class="table table-condensed table-responsive">
+
+		<div class="row">
+			<div class="col-md-3">
+                <img src="{{profiledata.avatar_url}}" width="300" height="300">
+			</div>
+			<div class="col-md-6 profile">
+				<div class="row">
+                    <h4>Name</h4>
+					<p>{{profiledata.name}}</p>
+				</div>
+                <div class="row">
+                    <h4>Github-Name</h4>
+					<p>{{profiledata.login}}</p>
+                </div>
+                <div class="row">
+                    <h4>Location</h4>
+					<p>{{profiledata.location}}</p>
+                </div>
+                <div class="row">
+					{{#if profiledata.bio}}
+                    	<h4>Bio</h4>
+						<p>{{profiledata.bio}}</p>
+					{{else}}
+                    	<h4>Bio</h4>
+						<p>not available</p>
+					{{/if}}
+                </div>
+			</div>
+		</div>
+
+</table>
