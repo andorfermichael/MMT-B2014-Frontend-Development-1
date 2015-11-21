@@ -1,0 +1,20 @@
+<h2>Repositories</h2>
+<table class="table table-condensed table-responsive">
+    <thead>
+    <th>Name</th>
+    <th>Created at</th>
+    <th>Last Push at</th>
+    <th>Clone URL</th>
+    </thead>
+    <tbody>
+	{{#each repositoriesData}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{created_at}}</td>
+            <td>{{pushed_at}}</td>
+			<!--<td><button class="btn btn-xs" type="button" title="Copy-To-Clipboard"/></td>-->
+            <td>{{clone_url}}</td>
+        </tr>
+	{{/each}}
+    </tbody>
+</table>
