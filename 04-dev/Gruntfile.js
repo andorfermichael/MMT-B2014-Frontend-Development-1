@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          '<%= config.dist %>/scripts/app.js': ['<%= config.app %>/assets/scripts/js/**/*.js']
+          '<%= config.dist %>/assets/scripts/app.js': ['<%= config.app %>/assets/scripts/js/**/*.js']
         },
         options: {
           browserifyOptions: {
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'node_modules/bootstrap/dist',
-            src: ['fonts/**'],
+            src: ['assets/fonts/**'],
             dest: '<%= config.dist %>'
           },
           {
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
           ]
         },
         files: {
-          '<%= config.dist %>/styles/app.css': '<%= config.app %>/assets/styles/app.less'
+          '<%= config.dist %>/assets/styles/app.css': '<%= config.app %>/assets/styles/app.less'
         }
       }
     },
