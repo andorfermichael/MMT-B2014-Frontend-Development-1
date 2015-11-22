@@ -5,7 +5,6 @@ import Clipboard from 'clipboard'
 import Handlebars from 'hbsfy/runtime'
 import replace from './helpers/replace'
 import dateFormat from './helpers/date-format'
-import * as api from './apis/index'
 import * as routers from './routers/index'
 
 Handlebars.registerHelper('replace', replace)
@@ -16,10 +15,6 @@ const $nav = $('.nav')
 
 var username = ''
 var usernameField = ''
-
-
-
-
 
 new Clipboard('.btn-clipboard')
 

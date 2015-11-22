@@ -17,7 +17,7 @@ var usernameField = ''
 
 function proveUsername(e) {
 	if (e.keyCode == 13) {
-		fetch(github + `users/${usernameField.value}`)
+		fetch(api.github + `users/${usernameField.value}`)
 		.then(response => {
 			if (response.status >= 400) {
 				document.getElementById('username-error').style.display = 'inline-block'
