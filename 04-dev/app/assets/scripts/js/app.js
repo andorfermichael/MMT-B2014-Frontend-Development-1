@@ -7,9 +7,12 @@ import replace from './helpers/replace'
 import dateFormat from './helpers/date-format'
 import tplHome from '../templates/home.hbs'
 import tplProfile from '../templates/profile.hbs'
+import tplFollowers from '../templates/followers.hbs'
 import tplRepositories from '../templates/repositories.hbs'
 import tplCommits from '../templates/commits.hbs'
 import tplContact from '../templates/contact.hbs'
+
+import * as api from './apis/index'
 
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
@@ -19,7 +22,8 @@ var usernameField = ''
 
 function proveUsername(e) {
 	if (e.keyCode == 13) {
-		fetch('http://api.github.com/' + `users/${usernameField.value}`)
+		console.log(api.github + `users/${usernameField.value}`)
+		fetch(github + `users/${usernameField.value}`)
 		.then(response => {
 			if (response.status >= 400) {
 				document.getElementById('username-error').style.display = 'inline-block'
@@ -71,7 +75,9 @@ function home() {
 }
 
 function profile() {
-	fetch('http://api.github.com/' + `users/${sessionStorage.username}`)
+	//sessionStorage.username = ctx.params.name
+	//console.log()
+	fetch(api.github + `users/${sessionStorage.username}`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -86,8 +92,24 @@ function profile() {
 	})
 }
 
+function followers() {
+	fetch(api.github + `users/${sessionStorage.username}/followers`)
+	.then(response => {
+		if (response.status >= 400) {
+			$content.html('Error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		$content.html(tplFollowers({followersData: data}))
+	})
+	.catch(err => {
+		$content.html('Error')
+	})
+}
+
 function repositories() {
-	fetch('https://api.github.com/' + `users/${sessionStorage.username}/repos`)
+	fetch(api.github + `users/${sessionStorage.username}/repos`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -103,7 +125,7 @@ function repositories() {
 }
 
 function commits(ctx) {
-	fetch('https://api.github.com/' + `repos/${ctx.params.owner}/${ctx.params.name}/commits`)
+	fetch(api.github + `repos/${ctx.params.owner}/${ctx.params.name}/commits`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -119,7 +141,7 @@ function commits(ctx) {
 }
 
 function contact() {
-	fetch('http://api.github.com/' + 'users/andorfermichael')
+	fetch(api.github + 'users/andorfermichael)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -134,10 +156,18 @@ function contact() {
 	})
 }
 
+function profileloop(ctx) {
+	sessionStorage.username = ctx.params.name
+	page.redirect('/profile')
+}
+
 page('/', '/home')
 page('/home', home)
 
 page('/profile', profile)
+page('/profileloop/:name', profileloop)
+
+page('/followers', followers)
 
 page('/repositories', repositories)
 
