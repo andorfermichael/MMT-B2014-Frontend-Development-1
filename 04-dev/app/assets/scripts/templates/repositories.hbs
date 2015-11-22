@@ -4,12 +4,11 @@
 		<th>Name</th>
 		<th>Last Push at</th>
 		<th>Clone URL</th>
-		<th>Commits</th>
     </thead>
     <tbody>
 	{{#each repositoriesData}}
         <tr>
-            <td>{{name}}</td>
+            <td><a href="/repos/{{owner.login}}/{{name}}/commits">{{name}}</a></td>
 			<td>{{dateFormat pushed_at format="DD.MM.YYYY, HH:mm:ss"}}</td>
             <td>
                 <input id="id-{{id}}" value="{{clone_url}}" readonly>
@@ -17,11 +16,6 @@
                     <img src="assets/images/clippy.svg" width="15" height="15" alt="Copy to clipboard">
                 </button>
             </td>
-            <td>
-                <a href="/repos/{{owner.login}}/{{name}}/commits" rel="external" target="_blank">
-                	<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-            	</a>
-			</td>
         </tr>
 	{{/each}}
     </tbody>
