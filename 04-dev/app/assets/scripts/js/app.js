@@ -13,14 +13,12 @@ import tplCommits from '../templates/commits.hbs'
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
 
-
 var username = ''
 var usernameField = ''
 
 function proveUsername(e) {
 	if (e.keyCode == 13) {
-		sessionStorage.username = usernameField.value
-		fetch('http://api.github.com/' + `users/${sessionStorage.username}`)
+		fetch('http://api.github.com/' + `users/${usernameField.value}`)
 		.then(response => {
 			if (response.status >= 400) {
 				document.getElementById('username-error').style.display = 'inline-block'
@@ -59,6 +57,12 @@ function home() {
 	usernameField = document.getElementById('username')
 	//username = usernameField.value
 	//sessionStorage.username = usernameField.value
+	if (sessionStorage.username) {
+		usernameField.value = sessionStorage.username
+	} else {
+		usernameField.value = 'octocat'
+		sessionStorage.username = 'octocat'
+	}
 	usernameField.value = sessionStorage.username
 	usernameField.addEventListener('keypress', function(e){
 		proveUsername(e)
