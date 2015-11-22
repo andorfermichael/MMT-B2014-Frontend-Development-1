@@ -13,6 +13,33 @@ import tplCommits from '../templates/commits.hbs'
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
 
+
+var username = ''
+var usernameField = ''
+
+function proveUsername(e) {
+	if (e.keyCode == 13) {
+		username = usernameField.value
+		fetch('http://api.github.com/' + `users/${username}`)
+		.then(response => {
+			if (response.status >= 400) {
+				document.getElementById('username-error').style.display = 'inline-block'
+				document.getElementById('username-success').style.display = 'none'
+				$('#form-group-username').addClass('has-error').removeClass('has-success')
+				return
+			}
+			else {
+				username = usernameField.value
+				document.getElementById('username-error').style.display = 'none'
+				document.getElementById('username-success').style.display = 'inline-block'
+				$('#form-group-username').addClass('has-success').removeClass('has-error')
+			}
+		})
+	}
+}
+
+
+
 const $content = $('#content')
 const $nav = $('.nav')
 
@@ -31,10 +58,15 @@ page('*', function(ctx, next) {
 
 function home() {
 	$content.html(tplHome())
+	usernameField = document.getElementById('username')
+	username = usernameField.value
+	usernameField.addEventListener('keypress', function(e){
+		proveUsername(e)
+	})
 }
 
 function profile() {
-	fetch('http://api.github.com/users/andorfermichael')
+	fetch('http://api.github.com/' + `users/${username}`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -50,7 +82,7 @@ function profile() {
 }
 
 function repositories() {
-	fetch('https://api.github.com/users/andorfermichael/repos')
+	fetch('https://api.github.com/' + `users/${username}/repos`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -66,7 +98,7 @@ function repositories() {
 }
 
 function commits(ctx) {
-	fetch('https://api.github.com/'+`repos/${ctx.params.owner}/${ctx.params.name}/commits`)
+	fetch('https://api.github.com/' + `repos/${ctx.params.owner}/${ctx.params.name}/commits`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -75,7 +107,6 @@ function commits(ctx) {
 	})
 	.then(data => {
 		$content.html(tplCommits({commitsData: data}))
-		console.log(data)
 	})
 	.catch(err => {
 		$content.html('Error')
