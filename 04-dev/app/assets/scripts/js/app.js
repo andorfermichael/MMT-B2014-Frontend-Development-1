@@ -19,8 +19,8 @@ var usernameField = ''
 
 function proveUsername(e) {
 	if (e.keyCode == 13) {
-		username = usernameField.value
-		fetch('http://api.github.com/' + `users/${username}`)
+		sessionStorage.username = usernameField.value
+		fetch('http://api.github.com/' + `users/${sessionStorage.username}`)
 		.then(response => {
 			if (response.status >= 400) {
 				document.getElementById('username-error').style.display = 'inline-block'
@@ -29,7 +29,7 @@ function proveUsername(e) {
 				return
 			}
 			else {
-				username = usernameField.value
+				sessionStorage.username = usernameField.value
 				document.getElementById('username-error').style.display = 'none'
 				document.getElementById('username-success').style.display = 'inline-block'
 				$('#form-group-username').addClass('has-success').removeClass('has-error')
@@ -37,8 +37,6 @@ function proveUsername(e) {
 		})
 	}
 }
-
-
 
 const $content = $('#content')
 const $nav = $('.nav')
@@ -59,14 +57,16 @@ page('*', function(ctx, next) {
 function home() {
 	$content.html(tplHome())
 	usernameField = document.getElementById('username')
-	username = usernameField.value
+	//username = usernameField.value
+	//sessionStorage.username = usernameField.value
+	usernameField.value = sessionStorage.username
 	usernameField.addEventListener('keypress', function(e){
 		proveUsername(e)
 	})
 }
 
 function profile() {
-	fetch('http://api.github.com/' + `users/${username}`)
+	fetch('http://api.github.com/' + `users/${sessionStorage.username}`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
@@ -82,7 +82,7 @@ function profile() {
 }
 
 function repositories() {
-	fetch('https://api.github.com/' + `users/${username}/repos`)
+	fetch('https://api.github.com/' + `users/${sessionStorage.username}/repos`)
 	.then(response => {
 		if (response.status >= 400) {
 			$content.html('Error')
