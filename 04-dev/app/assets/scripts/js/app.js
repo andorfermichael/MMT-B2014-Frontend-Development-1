@@ -5,17 +5,14 @@ import Clipboard from 'clipboard'
 import Handlebars from 'hbsfy/runtime'
 import replace from './helpers/replace'
 import dateFormat from './helpers/date-format'
-import tplHome from '../templates/home.hbs'
-import tplProfile from '../templates/profile.hbs'
-import tplFollowers from '../templates/followers.hbs'
-import tplRepositories from '../templates/repositories.hbs'
-import tplCommits from '../templates/commits.hbs'
-import tplContact from '../templates/contact.hbs'
-
 import * as api from './apis/index'
+import * as routers from './routers/index'
 
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
+
+const $content = $('#content')
+const $nav = $('.nav')
 
 var username = ''
 var usernameField = ''
@@ -41,8 +38,7 @@ function proveUsername(e) {
 	}
 }
 
-const $content = $('#content')
-const $nav = $('.nav')
+
 
 new Clipboard('.btn-clipboard')
 
@@ -57,122 +53,18 @@ page('*', function(ctx, next) {
 	next()
 })
 
-function home() {
-	$content.html(tplHome())
-	usernameField = document.getElementById('username')
-	//username = usernameField.value
-	//sessionStorage.username = usernameField.value
-	if (sessionStorage.username) {
-		usernameField.value = sessionStorage.username
-	} else {
-		usernameField.value = 'octocat'
-		sessionStorage.username = 'octocat'
-	}
-	usernameField.value = sessionStorage.username
-	usernameField.addEventListener('keypress', function(e){
-		proveUsername(e)
-	})
-}
+//page('/', '/home')
+page('/home', routers.home)
 
-function profile() {
-	//sessionStorage.username = ctx.params.name
-	//console.log()
-	fetch(api.github + `users/${sessionStorage.username}`)
-	.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-			$content.html(tplProfile({profileData: data}))
-	})
-	.catch(err => {
-			$content.html('Error')
-	})
-}
+page('/profile', routers.profile)
+page('/profileloop/:name', routers.profileloop)
 
-function followers() {
-	fetch(api.github + `users/${sessionStorage.username}/followers`)
-	.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-		$content.html(tplFollowers({followersData: data}))
-	})
-	.catch(err => {
-		$content.html('Error')
-	})
-}
+page('/followers', routers.followers)
 
-function repositories() {
-	fetch(api.github + `users/${sessionStorage.username}/repos`)
-	.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-		$content.html(tplRepositories({repositoriesData: data}))
-	})
-	.catch(err => {
-		$content.html('Error')
-	})
-}
+page('/repositories', routers.repositories)
 
-function commits(ctx) {
-	fetch(api.github + `repos/${ctx.params.owner}/${ctx.params.name}/commits`)
-	.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-		$content.html(tplCommits({commitsData: data}))
-	})
-	.catch(err => {
-		$content.html('Error')
-	})
-}
+page('/repos/:owner/:name/commits', routers.commits)
 
-function contact() {
-	fetch(api.github + 'users/andorfermichael)
-	.then(response => {
-		if (response.status >= 400) {
-			$content.html('Error')
-		}
-		return response.json()
-	})
-	.then(data => {
-		$content.html(tplContact({contactData: data}))
-	})
-	.catch(err => {
-		$content.html('Error')
-	})
-}
-
-function profileloop(ctx) {
-	sessionStorage.username = ctx.params.name
-	page.redirect('/profile')
-}
-
-page('/', '/home')
-page('/home', home)
-
-page('/profile', profile)
-page('/profileloop/:name', profileloop)
-
-page('/followers', followers)
-
-page('/repositories', repositories)
-
-page('/repos/:owner/:name/commits', commits)
-
-page('/contact', contact)
+page('/contact', routers.contact)
 
 page()
