@@ -14,7 +14,6 @@ Handlebars.registerHelper('dateFormat', dateFormat)
 
 const $content = $('#content')
 const $nav = $('.nav')
-const test = 0
 
 new Clipboard('.btn-clipboard')
 
