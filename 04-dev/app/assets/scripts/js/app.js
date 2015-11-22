@@ -8,6 +8,7 @@ import dateFormat from './helpers/date-format'
 import tplHome from '../templates/home.hbs'
 import tplProfile from '../templates/profile.hbs'
 import tplRepositories from '../templates/repositories.hbs'
+import tplCommits from '../templates/commits.hbs'
 
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
@@ -64,11 +65,30 @@ function repositories() {
 	})
 }
 
+function commits(ctx) {
+	fetch('https://api.github.com/'+`repos/${ctx.params.owner}/${ctx.params.name}/commits`)
+	.then(response => {
+		if (response.status >= 400) {
+			$content.html('Error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		$content.html(tplCommits({commitsData: data}))
+		console.log(data)
+	})
+	.catch(err => {
+		$content.html('Error')
+	})
+}
+
 page('/', '/home')
 page('/home', home)
 
 page('/profile', profile)
 
 page('/repositories', repositories)
+
+page('/repos/:owner/:name/commits', commits)
 
 page()
