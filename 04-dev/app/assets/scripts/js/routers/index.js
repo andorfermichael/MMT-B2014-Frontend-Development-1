@@ -8,33 +8,13 @@ import tplRepositories from '../../templates/repositories.hbs'
 import tplCommits from '../../templates/commits.hbs'
 import tplContact from '../../templates/contact.hbs'
 import * as api from '../apis/index'
+import proveUser from '../helpers/user'
 
 const $content = $('#content')
 const $nav = $('.nav')
 
 var username = ''
 var usernameField = ''
-
-function proveUsername(e) {
-	if (e.keyCode == 13) {
-		fetch(api.github + `users/${usernameField.value}`)
-		.then(response => {
-			if (response.status >= 400) {
-				document.getElementById('username-error').style.display = 'inline-block'
-				document.getElementById('username-success').style.display = 'none'
-				$('#form-group-username').addClass('has-error').removeClass('has-success')
-				return
-			}
-			else
-			{
-				sessionStorage.username = usernameField.value
-				document.getElementById('username-error').style.display = 'none'
-				document.getElementById('username-success').style.display = 'inline-block'
-				$('#form-group-username').addClass('has-success').removeClass('has-error')
-			}
-		})
-	}
-}
 
 export function home() {
 	$content.html(tplHome())
@@ -49,7 +29,7 @@ export function home() {
 		sessionStorage.username = 'octocat'
 	}
 	usernameField.addEventListener('keypress', function(e){
-		proveUsername(e)
+		proveUser(e)
 	})
 }
 
