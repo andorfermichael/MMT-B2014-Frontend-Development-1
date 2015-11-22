@@ -6,23 +6,18 @@ import Handlebars from 'hbsfy/runtime'
 import replace from './helpers/replace'
 import dateFormat from './helpers/date-format'
 import * as routers from './routers/index'
+import * as globalVars from './globals/index'
 
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
 
-const $content = $('#content')
-const $nav = $('.nav')
-
-var username = ''
-var usernameField = ''
-
 new Clipboard('.btn-clipboard')
 
 page('*', function(ctx, next) {
-	$nav
+	globalVars.$nav
 		.children()
 		.removeClass('active')
-	$nav
+	globalVars.$nav
 		.find('a[href|="' + ctx.path + '"]')
 		.parent()
 		.addClass('active')

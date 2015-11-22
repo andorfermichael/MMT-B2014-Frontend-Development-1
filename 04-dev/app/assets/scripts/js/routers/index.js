@@ -9,26 +9,21 @@ import tplCommits from '../../templates/commits.hbs'
 import tplContact from '../../templates/contact.hbs'
 import * as api from '../apis/index'
 import proveUser from '../helpers/user'
-
-const $content = $('#content')
-const $nav = $('.nav')
-
-var username = ''
-var usernameField = ''
+import * as globalVars from '../globals/index'
 
 export function home() {
-	$content.html(tplHome())
-	usernameField = document.getElementById('username')
+	globalVars.$content.html(tplHome())
+	globalVars.usernameField = document.getElementById('username')
 	if (sessionStorage.username)
 	{
-		usernameField.value = sessionStorage.username
+		globalVars.usernameField.value = sessionStorage.username
 	}
 	else
 	{
-		usernameField.value = 'octocat'
+		globalVars.usernameField.value = 'octocat'
 		sessionStorage.username = 'octocat'
 	}
-	usernameField.addEventListener('keypress', function(e){
+	globalVars.usernameField.addEventListener('keypress', function(e){
 		proveUser(e)
 	})
 }
@@ -38,15 +33,15 @@ export function profile() {
 	.then(response => {
 		if (response.status >= 400)
 		{
-			$content.html('Error')
+			globalVars.$content.html('Error')
 		}
 		return response.json()
 	})
 	.then(data => {
-		$content.html(tplProfile({profileData: data}))
+		globalVars.$content.html(tplProfile({profileData: data}))
 	})
 	.catch(err => {
-		$content.html('Error')
+		globalVars.$content.html('Error')
 	})
 }
 
@@ -55,15 +50,15 @@ export function followers() {
 	.then(response => {
 		if (response.status >= 400)
 		{
-			$content.html('Error')
+			globalVars.$content.html('Error')
 		}
 		return response.json()
 	})
 	.then(data => {
-		$content.html(tplFollowers({followersData: data}))
+		globalVars.$content.html(tplFollowers({followersData: data}))
 	})
 	.catch(err => {
-		$content.html('Error')
+		globalVars.$content.html('Error')
 	})
 }
 
@@ -72,15 +67,15 @@ export function repositories() {
 	.then(response => {
 		if (response.status >= 400)
 		{
-			$content.html('Error')
+			globalVars.$content.html('Error')
 		}
 		return response.json()
 	})
 	.then(data => {
-		$content.html(tplRepositories({repositoriesData: data}))
+		globalVars.$content.html(tplRepositories({repositoriesData: data}))
 	})
 	.catch(err => {
-		$content.html('Error')
+		globalVars.$content.html('Error')
 	})
 }
 
@@ -89,15 +84,15 @@ export function commits(ctx) {
 	.then(response => {
 		if (response.status >= 400)
 		{
-			$content.html('Error')
+			globalVars.$content.html('Error')
 		}
 		return response.json()
 	})
 	.then(data => {
-		$content.html(tplCommits({commitsData: data}))
+		globalVars.$content.html(tplCommits({commitsData: data}))
 	})
 	.catch(err => {
-		$content.html('Error')
+		globalVars.$content.html('Error')
 	})
 }
 
@@ -106,15 +101,15 @@ export function contact() {
 	.then(response => {
 		if (response.status >= 400)
 		{
-			$content.html('Error')
+			globalVars.$content.html('Error')
 		}
 		return response.json()
 	})
 	.then(data => {
-		$content.html(tplContact({contactData: data}))
+		globalVars.$content.html(tplContact({contactData: data}))
 	})
 	.catch(err => {
-		$content.html('Error')
+		globalVars.$content.html('Error')
 	})
 }
 
