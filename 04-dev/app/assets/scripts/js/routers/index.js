@@ -15,14 +15,36 @@ const $nav = $('.nav')
 var username = ''
 var usernameField = ''
 
+function proveUsername(e) {
+	if (e.keyCode == 13) {
+		fetch(github + `users/${usernameField.value}`)
+		.then(response => {
+			if (response.status >= 400) {
+				document.getElementById('username-error').style.display = 'inline-block'
+				document.getElementById('username-success').style.display = 'none'
+				$('#form-group-username').addClass('has-error').removeClass('has-success')
+				return
+			}
+			else
+			{
+				sessionStorage.username = usernameField.value
+				document.getElementById('username-error').style.display = 'none'
+				document.getElementById('username-success').style.display = 'inline-block'
+				$('#form-group-username').addClass('has-success').removeClass('has-error')
+			}
+		})
+	}
+}
 
 export function home() {
 	$content.html(tplHome())
 	usernameField = document.getElementById('username')
-	if (sessionStorage.username) {
+	if (sessionStorage.username)
+	{
 		usernameField.value = sessionStorage.username
 	}
-	else {
+	else
+	{
 		usernameField.value = 'octocat'
 		sessionStorage.username = 'octocat'
 	}
@@ -34,7 +56,8 @@ export function home() {
 export function profile() {
 	fetch(api.github + `users/${sessionStorage.username}`)
 	.then(response => {
-		if (response.status >= 400) {
+		if (response.status >= 400)
+		{
 			$content.html('Error')
 		}
 		return response.json()
@@ -50,7 +73,8 @@ export function profile() {
 export function followers() {
 	fetch(api.github + `users/${sessionStorage.username}/followers`)
 	.then(response => {
-		if (response.status >= 400) {
+		if (response.status >= 400)
+		{
 			$content.html('Error')
 		}
 		return response.json()
@@ -66,7 +90,8 @@ export function followers() {
 export function repositories() {
 	fetch(api.github + `users/${sessionStorage.username}/repos`)
 	.then(response => {
-		if (response.status >= 400) {
+		if (response.status >= 400)
+		{
 			$content.html('Error')
 		}
 		return response.json()
@@ -82,7 +107,8 @@ export function repositories() {
 export function commits(ctx) {
 	fetch(api.github + `repos/${ctx.params.owner}/${ctx.params.name}/commits`)
 	.then(response => {
-		if (response.status >= 400) {
+		if (response.status >= 400)
+		{
 			$content.html('Error')
 		}
 		return response.json()
@@ -98,10 +124,11 @@ export function commits(ctx) {
 export function contact() {
 	fetch(api.github + 'users/andorfermichael')
 	.then(response => {
-		if (response.status >= 400) {
+		if (response.status >= 400)
+		{
 			$content.html('Error')
 		}
-	return response.json()
+		return response.json()
 	})
 	.then(data => {
 		$content.html(tplContact({contactData: data}))
