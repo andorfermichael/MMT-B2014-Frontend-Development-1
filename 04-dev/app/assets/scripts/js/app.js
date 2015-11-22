@@ -9,6 +9,7 @@ import tplHome from '../templates/home.hbs'
 import tplProfile from '../templates/profile.hbs'
 import tplRepositories from '../templates/repositories.hbs'
 import tplCommits from '../templates/commits.hbs'
+import tplContact from '../templates/contact.hbs'
 
 Handlebars.registerHelper('replace', replace)
 Handlebars.registerHelper('dateFormat', dateFormat)
@@ -117,6 +118,22 @@ function commits(ctx) {
 	})
 }
 
+function contact() {
+	fetch('http://api.github.com/' + 'users/andorfermichael')
+	.then(response => {
+		if (response.status >= 400) {
+			$content.html('Error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		$content.html(tplContact({contactData: data}))
+	})
+	.catch(err => {
+		$content.html('Error')
+	})
+}
+
 page('/', '/home')
 page('/home', home)
 
@@ -125,5 +142,7 @@ page('/profile', profile)
 page('/repositories', repositories)
 
 page('/repos/:owner/:name/commits', commits)
+
+page('/contact', contact)
 
 page()
