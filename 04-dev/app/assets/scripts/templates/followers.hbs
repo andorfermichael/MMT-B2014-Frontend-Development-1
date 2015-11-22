@@ -1,0 +1,19 @@
+<h2>Repositories</h2>
+<table class="table table-condensed table-responsive">
+    <thead>
+        <th>Github Username</th>
+		<th>Github URL</th>
+    </thead>
+    <tbody>
+	{{#each followersData}}
+        <tr>
+            <td><a href="/profileloop/{{login}}">{{login}}</a></td>
+			<td>
+				<a href="{{html_url}}" rel="external" target="_blank">
+                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+            	</a>
+			</td>
+        </tr>
+	{{/each}}
+    </tbody>
+</table>
