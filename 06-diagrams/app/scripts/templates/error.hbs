@@ -1,0 +1,12 @@
+<h2>Error</h2>
+<p class="text-muted">
+  Something went wrong. You might find a more detailed description. Anyway, we
+  are aware about this issue and are working hard on it.
+</p>
+{{#if error}}
+  <hr>
+  <h4 class="text-danger">Error: {{error.message}}</h4>
+  <pre class="text-danger">
+{{error.stack}}
+  </pre>
+{{/if}}

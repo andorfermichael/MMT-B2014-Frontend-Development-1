@@ -1,0 +1,56 @@
+<blockquote>
+  <p>
+    A diagram is a symbolic representation of information according to some
+    visualization technique. Diagrams have been used since ancient times,
+    but became more prevalent during the Enlightenment. Sometimes, the technique
+    uses a three-dimensional visualization which is then projected onto a
+    two-dimensional surface. The word graph is sometimes used as a synonym for
+    diagram.
+  </p>
+</blockquote>
+<h2>Circles</h2>
+<div class="row">
+  <div id="chart3" class="col-sm-12"></div>
+  </div>
+</div>
+
+<h2>Barchart</h2>
+<div class="row">
+  <div id="chart1" class="col-sm-6"></div>
+  <div class="col-sm-6">
+    <table class="table table-condensed table-responsive table-hover">
+      <thead>
+      <th class="text-left">Name</th>
+      <th class="text-center">Age</th>
+      </thead>
+      <tbody>
+      {{#each drivers}}
+        <tr>
+          <td class="text-left">{{name}}</td>
+          <td class="text-center">{{age}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<h2>Geo</h2>
+<div class="row">
+  <div id="chart2" class="col-sm-6"></div>
+  <div class="col-sm-6">
+    <table class="table table-condensed table-responsive table-hover">
+      <thead>
+      <th>Name</th>
+      <th>Location</th>
+      </thead>
+      <tbody>
+      {{#each courses}}
+        <tr>
+          <td>{{circuitName}}</td>
+          <td>{{Location.locality}}, {{Location.country}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
