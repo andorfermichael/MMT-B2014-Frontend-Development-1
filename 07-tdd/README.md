@@ -6,7 +6,7 @@
 npm install
 ```
 
-## Dev
+## Test
 
 ```bash
 npm test
