@@ -1,4 +1,4 @@
-/*var should = require('should')
+var should = require('should')
 var mockFramework = require('a')
 var newUser = require('../src/1mocking.js')
 
@@ -11,4 +11,4 @@ describe('mocking object', function() {
         should(user.getName()).equal('Michael Andorfer Substitution')
         should(userMock.verify()).be.true
     })
-})*/
+})
