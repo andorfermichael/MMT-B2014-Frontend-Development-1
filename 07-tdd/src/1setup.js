@@ -1,29 +1,20 @@
-var should = require('should')
-var setup = require('../src/1setup.js')
+module.exports = function changeName(array, doSomething) {
+    if (doSomething === 1) {
+    	array.unshift(0)
+        return array
+    }
 
-describe('setup - array manipulation', function() {
-    var testArray = []
+    if (doSomething === 2) {
+    	return array.shift()
+    }
 
-    // Setup
-    beforeEach(function() {
-        testArray = [1, 2, 3]
-    })
+    if (doSomething === 3) {
+    	array.push(4)
+        return array
+    }
 
-    it('should add element at the beginning of array', function() {
-        const result = setup(testArray, 1)
-        should(result[0]).be.exactly(0).and.be.a.Number()
-    })
-
-    it('should remove first element of array', function() {
-        should(setup(testArray, 2)).be.exactly(1).and.be.a.Number()
-    })
-
-    it('should add element at the end of array', function() {
-        const result = setup(testArray, 3)
-        should(result[3]).be.exactly(4).and.be.a.Number()
-     })
-
-    it('should remove last element of array', function() {
-        should(setup(testArray, 4)).be.exactly(3).and.be.a.Number()
-    })
-})
+    if (doSomething === 4) {
+    	return array.pop()
+    }
+    throw new Error("Function does not exist!")
+}
