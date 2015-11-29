@@ -1,5 +1,5 @@
 var should = require('should')
-var scalar = require('../src/scalar.js')
+var scalar = require('../src/1scalar.js')
 
 describe('scalar', function() {
 	it('should take a number as input', function() {
