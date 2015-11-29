@@ -1,5 +1,5 @@
 var should = require('should')
-var scalar = require('../src/scalar2.js')
+var scalar = require('../src/2scalar.js')
 
 describe('scalar', function() {
 

@@ -1,5 +1,5 @@
 var should = require('should')
-var createDog = require('../src/setupteardown.js')
+var createDog = require('../src/2setupteardown.js')
 
 describe('setup', function() {
 

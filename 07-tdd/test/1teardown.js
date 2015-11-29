@@ -1,4 +1,4 @@
-var should = require('should')
+/*var should = require('should')
 var teardown = require('../src/1teardown.js')
 
 describe('teardown - set manipulation', function() {
@@ -36,4 +36,4 @@ describe('teardown - set manipulation', function() {
         should(set.values().next().value).be.type('string')
         should(set.has(1)).equal(false)
     })
-})
+})*/

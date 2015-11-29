@@ -1,4 +1,4 @@
-var should = require('should')
+/*var should = require('should')
 var setup = require('../src/1setup.js')
 
 describe('setup - array manipulation', function() {
@@ -26,4 +26,4 @@ describe('setup - array manipulation', function() {
     it('should remove last element of array', function() {
         should(setup(testArray, 4)).be.exactly(3).and.be.a.Number()
     })
-})
+})*/

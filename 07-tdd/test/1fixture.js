@@ -1,4 +1,4 @@
-var should = require('should')
+/*var should = require('should')
 var fixtures = require('node-fixtures')
 var updateName = require('../src/1fixture')
 
@@ -20,4 +20,4 @@ describe('fixtures', function() {
         var result = updateName(fixtures.users.p2, 'Viki')
         should(result).equal('Viki')
     })
-})
+})*/

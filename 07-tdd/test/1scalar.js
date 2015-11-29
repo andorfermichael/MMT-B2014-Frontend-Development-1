@@ -1,4 +1,4 @@
-var should = require('should')
+/*var should = require('should')
 var scalar = require('../src/1scalar.js')
 
 describe('scalar', function() {
@@ -25,4 +25,4 @@ describe('scalar', function() {
 			scalar({})
 		}).should.throw()
 	})
-})
+})*/
