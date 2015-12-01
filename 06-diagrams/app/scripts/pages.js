@@ -8,6 +8,7 @@ import tplError from './templates/error.hbs'
 import barchart from './charts/barchart'
 import geo from './charts/geo'
 import circles from './charts/circles'
+import piechart from './charts/piechart'
 
 const content = document.getElementById('content')
 
@@ -32,27 +33,48 @@ function driversByAge(data) {
     })
 }
 
+function constructorsByNationality(data) {
+  const constructors = data.MRData.ConstructorTable.Constructors
+  return constructors
+    .map(constructor => {
+      const nationality = constructor.nationality
+      return {
+        nationality
+      }
+    })
+    .sort((a, b) => {
+      if (a.nationality > b.nationality) {
+        return 1
+      }
+      return -1
+    })
+}
+
 export function home() {
   const drivers = fetch(`${config.api.url}/drivers.json?limit=10`)
   const courses = fetch(`${config.api.url}/circuits.json?limit=10`)
+  const constructors = fetch(`${config.api.url}/constructors.json?limit=100`)
   Promise
-    .all([drivers, courses])
+    .all([drivers, courses, constructors])
     .then(values => {
       return Promise.all(values.map(val => val.json()))
     })
     .then(data => {
       const driversData = driversByAge(data[0])
       const coursesData = data[1].MRData.CircuitTable.Circuits
+      const constructorsData = constructorsByNationality(data[2])
 
       content.innerHTML = tplHome({
         drivers: driversData,
-        courses: coursesData
+        courses: coursesData,
+        constructors: constructorsData
       })
 
       // create charts
       barchart('chart1', driversData)
       geo('chart2', coursesData)
       circles('chart3')
+      piechart('chart4', constructorsData)
     })
     .catch(err => {
       globalError = err
