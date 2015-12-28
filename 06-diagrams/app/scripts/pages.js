@@ -7,6 +7,7 @@ import tplNotFound from './templates/not-found.hbs'
 import tplError from './templates/error.hbs'
 import barchart from './charts/barchart'
 import geo from './charts/geo'
+import geo2 from './charts/geo2'
 import circles from './charts/circles'
 import piechart from './charts/piechart'
 
@@ -75,6 +76,7 @@ export function home() {
       geo('chart2', coursesData)
       circles('chart3')
       piechart('chart4', constructorsData)
+      geo2('chart5')
     })
     .catch(err => {
       globalError = err

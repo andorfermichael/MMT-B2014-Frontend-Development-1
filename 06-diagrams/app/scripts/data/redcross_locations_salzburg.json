@@ -1,0 +1,618 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [{
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 1,
+      "DienstSt": "Salzburg Stadt",
+      "Art": "Bezirksstelle",
+      "Ort": "Salzburg",
+      "Strasse": "SterneckstraÃŸe",
+      "Hnr": "32",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.057483584385901, 47.808701086356294]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 2,
+      "DienstSt": "Lamprechtshausen",
+      "Art": "Ortsstelle",
+      "Ort": "Lamprechtshausen",
+      "Strasse": "SchulstraÃŸe",
+      "Hnr": "1",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.956917290387274, 47.99261622457416]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 3,
+      "DienstSt": "Mattsee",
+      "Art": "Ortsstelle",
+      "Ort": "Mattsee",
+      "Strasse": "Fischinger StraÃŸe",
+      "Hnr": "15",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.099823908369762, 47.97209979131719]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 4,
+      "DienstSt": "StraÃŸwalchen",
+      "Art": "Ortsstelle",
+      "Ort": "StraÃŸwalchen",
+      "Strasse": "Salzburger StraÃŸe",
+      "Hnr": "13",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.253924529233375, 47.97758180789092]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 5,
+      "DienstSt": "Seekirchen",
+      "Art": "Ortsstelle",
+      "Ort": "Seekirchen",
+      "Strasse": "MÃ¼hlbachstraÃŸe",
+      "Hnr": "33",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.118413152899393, 47.895852303110175]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 6,
+      "DienstSt": "Hof",
+      "Art": "Ortsstelle",
+      "Ort": "Hof",
+      "Strasse": "Baderluck",
+      "Hnr": "10",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.237282414705158, 47.81134908483761]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 7,
+      "DienstSt": "Strobl",
+      "Art": "Ortsstelle",
+      "Ort": "Strobl",
+      "Strasse": "WeiÃŸenbach",
+      "Hnr": "320",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.495336468311917, 47.71355357855584]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 8,
+      "DienstSt": "Hallein",
+      "Art": "Bezirksstelle",
+      "Ort": "Hallein",
+      "Strasse": "Wiestal LandesstraÃŸe",
+      "Hnr": "2",
+      "Bezirk": "Tennengau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.102306506278651, 47.68509419929532]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 9,
+      "DienstSt": "Golling",
+      "Art": "Ortsstelle",
+      "Ort": "Golling",
+      "Strasse": "Markt",
+      "Hnr": "252",
+      "Bezirk": "Tennengau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.166965818301358, 47.59653124920997]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 10,
+      "DienstSt": "Abtenau",
+      "Art": "Bezirksstelle",
+      "Ort": "Abtenau",
+      "Strasse": "Markt",
+      "Hnr": "227",
+      "Bezirk": "Tennengau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.347429553943426, 47.5652929626067]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 11,
+      "DienstSt": "St. Johann",
+      "Art": "Bezirksstelle",
+      "Ort": "St. Johann",
+      "Strasse": "Reinbachsiedlung",
+      "Hnr": "17",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.19051273649221, 47.34149931128295]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 12,
+      "DienstSt": "Werfen",
+      "Art": "Ortsstelle",
+      "Ort": "Werfen",
+      "Strasse": "Josef-Struber-StraÃŸe",
+      "Hnr": "16",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.185831681844656, 47.47764645298585]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 13,
+      "DienstSt": "Bischofshofen",
+      "Art": "Ortsstelle",
+      "Ort": "Bischofshofen",
+      "Strasse": "Gasteiner StraÃŸe",
+      "Hnr": "56c",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.215828349809597, 47.40867430802211]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 14,
+      "DienstSt": "Schwarzach",
+      "Art": "Ortsstelle",
+      "Ort": "Schwarzach",
+      "Strasse": "Bgm.-StÃ¶llinger-Platz",
+      "Hnr": "1",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.15072321368001, 47.32152351280013]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 15,
+      "DienstSt": "Radstadt",
+      "Art": "Bezirksstelle",
+      "Ort": "Radstadt",
+      "Strasse": "TauernstraÃŸe",
+      "Hnr": "13",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.474152916613573, 47.382116361294024]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 16,
+      "DienstSt": "Gastein",
+      "Art": "Bezirksstelle",
+      "Ort": "Bad Hofgastein",
+      "Strasse": "Zittrauergasse",
+      "Hnr": "1",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.113487817181408, 47.14928900949841]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 17,
+      "DienstSt": "Tamsweg",
+      "Art": "Bezirksstelle",
+      "Ort": "Tamsweg",
+      "Strasse": "Josef-EhrenreichstraÃŸe",
+      "Hnr": "1",
+      "Bezirk": "Lungau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.810334584873436, 47.13090092079167]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 18,
+      "DienstSt": "Mauterndorf",
+      "Art": "Ortsstelle",
+      "Ort": "Mauterndorf",
+      "Strasse": "Markt",
+      "Hnr": "370",
+      "Bezirk": "Lungau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.6821128714535, 47.13395334787188]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 19,
+      "DienstSt": "St. Michael",
+      "Art": "Ortsstelle",
+      "Ort": "St. Michael",
+      "Strasse": "Rot-Kreuz-Gasse",
+      "Hnr": "392",
+      "Bezirk": "Lungau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.637270928268563, 47.099497384924675]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 20,
+      "DienstSt": "Zell am See",
+      "Art": "Bezirksstelle",
+      "Ort": "Maishofen",
+      "Strasse": "ParacelsusstraÃŸe",
+      "Hnr": "14",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.815923184716242, 47.339637082810036]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 21,
+      "DienstSt": "Rauris",
+      "Art": "Ortsstelle",
+      "Ort": "Rauris",
+      "Strasse": "Wiesenweg",
+      "Hnr": "8",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.99268199409755, 47.22723532174726]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 22,
+      "DienstSt": "Mittersill",
+      "Art": "Ortsstelle",
+      "Ort": "Mittersill",
+      "Strasse": "FelberstraÃŸe",
+      "Hnr": "8",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.484733916501922, 47.2805023036837]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 23,
+      "DienstSt": "Wald",
+      "Art": "Ortsstelle",
+      "Ort": "Wald",
+      "Strasse": "Wald",
+      "Hnr": "80",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.22802126780771, 47.246052416960374]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 24,
+      "DienstSt": "Saalbach",
+      "Art": "Ortsstelle",
+      "Ort": "Saalbach",
+      "Strasse": "Forstwiesenweg",
+      "Hnr": "783",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.647692957586372, 47.388732111328416]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 25,
+      "DienstSt": "Saalfelden",
+      "Art": "Ortsstelle",
+      "Ort": "Saalfelden",
+      "Strasse": "ZellerstraÃŸe",
+      "Hnr": "20",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.833587107446565, 47.42500885233182]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 26,
+      "DienstSt": "St. Martin bei Lofer",
+      "Art": "Ortsstelle",
+      "Ort": "St. Martin bei Lofer",
+      "Strasse": "Dorf",
+      "Hnr": "45",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.704679958403473, 47.56795225178475]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 28,
+      "DienstSt": "St. Johann",
+      "Art": "NAH-StÃ¼tzpunkt",
+      "Ort": "St. Johann",
+      "Strasse": "Urreiting",
+      "Hnr": "84",
+      "Bezirk": "Pongau",
+      "Typ": "Martin 1"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.222615429859303, 47.39377659969685]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 29,
+      "DienstSt": "Zell am See",
+      "Art": "NAH-StÃ¼tzpunkt",
+      "Ort": "Zell am see",
+      "Strasse": "KaprunerstraÃŸe",
+      "Hnr": "15",
+      "Bezirk": "Pinzgau",
+      "Typ": "Alpin-Heli 6"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.787537987772668, 47.29228675916642]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 30,
+      "DienstSt": "Salzburg",
+      "Art": "NAH-StÃ¼tzpunkt",
+      "Ort": "Salzburg",
+      "Strasse": "KrÃ¶benfeldstraÃŸe",
+      "Hnr": "12B",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": "C6"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.996896825622395, 47.79587092657246]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 31,
+      "DienstSt": "Mittersill",
+      "Art": "NAW-StÃ¼tzpunkt",
+      "Ort": "Mittersill",
+      "Strasse": "FelberstraÃŸe",
+      "Hnr": "8",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.484733916501922, 47.2805023036837]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 32,
+      "DienstSt": "Bad Gastein",
+      "Art": "NAW-StÃ¼tzpunkt",
+      "Ort": "Bad Hofgastein",
+      "Strasse": "Zittrauergasse",
+      "Hnr": "1",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.113487817181408, 47.14928900949841]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 33,
+      "DienstSt": "Zell am See",
+      "Art": "NEF-StÃ¼tzpunkt",
+      "Ort": "Zell am See",
+      "Strasse": "ParacelsusstraÃŸe\r\n",
+      "Hnr": "14",
+      "Bezirk": "Pinzgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.815923184716242, 47.339637082810036]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 36,
+      "DienstSt": "Radstadt",
+      "Art": "NAW-StÃ¼tzpunkt",
+      "Ort": "Radstadt",
+      "Strasse": "TauernstraÃŸe",
+      "Hnr": "13",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.474152916613573, 47.382116361294024]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 37,
+      "DienstSt": "Salzburg",
+      "Art": "NEF-StÃ¼tzpunkt",
+      "Ort": "Salzburg",
+      "Strasse": "AiglhofstraÃŸe",
+      "Hnr": "32",
+      "Bezirk": "Stadt Salzburg und Flachgau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.027605616355407, 47.805680977606265]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 38,
+      "DienstSt": "Tamsweg",
+      "Art": "NEF-StÃ¼tzpunkt",
+      "Ort": "Tamsweg",
+      "Strasse": "Josef-Ehrenreich-StraÃŸe",
+      "Hnr": "1",
+      "Bezirk": "Lungau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.810334584873436, 47.13090092079167]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 40,
+      "DienstSt": "Schwarzach",
+      "Art": "NEF-StÃ¼tzpunkt",
+      "Ort": "Schwarzach",
+      "Strasse": "Kardinal-Schwarzenberg-StraÃŸe",
+      "Hnr": "5",
+      "Bezirk": "Pongau",
+      "Typ": null
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.153177040811315, 47.321636210847366]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 42,
+      "DienstSt": "Saalbach",
+      "Art": "NAH-StÃ¼tzpunkt",
+      "Ort": "Saalbach",
+      "Strasse": "Gerstreitweg",
+      "Hnr": "5",
+      "Bezirk": "Pinzgau",
+      "Typ": "Martin 6 saisonal"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.596740297849923, 47.36634559656824]
+    }
+  }, {
+    "type": "Feature",
+    "properties": {
+      "OBJECTID": 43,
+      "DienstSt": "Radstadt",
+      "Art": "NAH-StÃ¼tzpunkt",
+      "Ort": "Radstadt",
+      "Strasse": "Dechantwiese",
+      "Hnr": "7",
+      "Bezirk": "Pongau",
+      "Typ": "Martin 10 saisonal"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.492107240188922, 47.38589940907311]
+    }
+  }]
+}
