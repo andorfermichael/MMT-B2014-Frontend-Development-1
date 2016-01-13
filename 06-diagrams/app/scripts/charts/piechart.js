@@ -17,7 +17,7 @@ function draw(id, legendid, data, width, height) {
   const vis = svg
     .data([data])                                                                // Associate the data with the document
     .attr("width", width)                                                        // Set the width and height of the visualization (these will be attributes of the <svg> tag
-    .attr("height", height)
+    .attr("height", height - 150)
     .append("g")                                                                 // Make a group to hold the pie chart
     .attr("transform", "translate(" + radius + "," + radius + ")")               // Move the center of the pie chart from 0, 0 to radius, radius
 
@@ -31,11 +31,11 @@ function draw(id, legendid, data, width, height) {
     .data(pie)                                                                   // Associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
     .enter()                                                                     // Create a <g> for every object in the data array
     .append("g")                                                                 // Create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-    .attr("class", "slice");                                                     // Set class which is used for styling of the slices (like text)
+    .attr("class", "slice")                                                      // Set class which is used for styling of the slices (like text)
 
   arcs.append("path")
     .attr("fill", function(d, i) { return color(i) } )                           // Set the color for each slice to be chosen from the built in color range
-    .attr("d", arc);                                                             // Create the actual SVG path using the associated data (pie) with the arc drawing function
+    .attr("d", arc)                                                              // Create the actual SVG path using the associated data (pie) with the arc drawing function
 
   arcs.append("text")                                                            // Add a label to each slice
     .attr("transform", function(d) {                                             // Set the label's origin to the center of the arc
@@ -59,24 +59,24 @@ function draw(id, legendid, data, width, height) {
       .append('g')
       .attr('class', 'leg')
       .attr('transform', function(d, i) {
-        const height = 50;
-        const x = 950;
-        const y = i * height + 20;
-        return 'translate(' + x + ',' + y + ')';
-      });
+        const height = 50
+        const x = 950
+        const y = i * height + 20
+        return 'translate(' + x + ',' + y + ')'
+      })
 
   // Define colored rectangles for the legend
   legend.append('rect')
     .attr('width', 30)
     .attr('height', 30)
     .style('fill', color)
-    .style('stroke', color);
+    .style('stroke', color)
 
   // Define text properties of the legend
   legend.append('text')
     .attr('x', 40)
     .attr('y', 20)
-    .text(function(d) { return d; });
+    .text(function(d) { return d })
 
 }
 
@@ -102,8 +102,8 @@ function calcTeamPercentages(){
 export default function(containerId, data) {
   const container = document.getElementById(containerId)
   const width = 820
-  const height = 1100
-  const viewBox = `0 0 ${width + 300} ${height + 300}`
+  const height = 900
+  const viewBox = `0 0 ${width + 300} ${height}`
 
   const id = 'chart-' + uuid.v4()
   const legendid = 'legend-' + uuid.v4()
@@ -123,7 +123,7 @@ export default function(containerId, data) {
   // Store the counts per nationality in an array instead of an object
   let i = 0
   Object.keys(counts).forEach(function(key) {
-    countOfTeamsPerNationality.push(counts[key]);
+    countOfTeamsPerNationality.push(counts[key])
     i++
   })
 
