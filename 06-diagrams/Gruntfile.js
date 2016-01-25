@@ -96,8 +96,8 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= config.app %>',
-            src: ['images/**/*{.png,.gif,.jpg}'],
-            dest: '<%= config.dist %>/images'
+            src: ['images/**/*{.png,.gif,.jpg,.svg}'],
+            dest: '<%= config.dist %>'
           }
         ]
       }
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
         tasks: ['copy']
       },
       images: {
-        files: ['<%= config.app %>/images/**/*{.png,.gif,.jpg}'],
+        files: ['<%= config.app %>/images/**/*{.png,.gif,.jpg,.svg}'],
         tasks: ['copy']
       },
       scripts: {
